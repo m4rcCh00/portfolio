@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marc Choo — Engineering Student &amp; Maker</title>
+<meta name="description" content="Marc Choo — SUTD undergraduate, President of the Mechanical Designer Club, maker working across CAD, hardware and rapid prototyping. Work, experience and achievements.">
+<meta property="og:title" content="Marc Choo — Engineering Student & Maker">
+<meta property="og:description" content="SUTD undergraduate. CAD, hardware, rapid prototyping. Work, experience and achievements.">
+<meta property="og:image" content="assets/marc-headshot.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231F3A5F'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='700' fill='%23E8762E' text-anchor='middle'>MC</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F3A5F;
+    --navy-deep: #172D49;
+    --orange: #E8762E;
+    --orange-soft: #FBEDE3;
+    --ink: #1A1D21;
+    --muted: #5A6472;
+    --surface: #FFFFFF;
+    --surface-alt: #F5F7FA;
+    --chip: #EAF0F6;
+    --line: #DDE4EC;
+    --display: "Space Grotesk", "Helvetica Neue", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+    --maxw: 1080px;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--surface);
+    line-height: 1.6;
+    font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--navy); }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    transition: box-shadow .2s ease;
+  }
+  header.scrolled { box-shadow: 0 2px 14px rgba(31,58,95,.10); }
+  .nav {
+    display: flex; align-items: center; gap: 28px;
+    height: 64px;
+  }
+  .brand {
+    font-family: var(--display); font-weight: 700; font-size: 19px;
+    color: var(--navy); text-decoration: none; letter-spacing: .2px;
+  }
+  .brand span { color: var(--orange); }
+  .nav-links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 14.5px; font-weight: 500;
+    padding: 8px 2px; border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--navy); border-bottom-color: var(--orange); }
+  .btn {
+    display: inline-block; font-weight: 600; font-size: 15px;
+    padding: 12px 22px; border-radius: var(--radius); text-decoration: none;
+    border: 1.5px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-primary:hover { background: #d5661f; }
+  .btn-ghost { border-color: rgba(255,255,255,.45); color: #fff; }
+  .btn-ghost:hover { border-color: #fff; }
+  .btn-outline { border-color: var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: #fff; }
+  .nav .btn { padding: 9px 16px; font-size: 14px; }
+  .nav-toggle { display: none; }
+
+  /* ---------- Hero ---------- */
+  .hero { background: var(--navy); color: #fff; overflow: hidden; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px;
+    align-items: center; padding: 72px 0 64px;
+  }
+  .kicker {
+    font-family: var(--display); font-weight: 500; font-size: 13.5px;
+    letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.04;
+    letter-spacing: -1px; margin-bottom: 18px;
+  }
+  .hero p.lede {
+    font-size: 18px; color: #D5DEE9; max-width: 46ch; margin-bottom: 30px;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-photo { position: relative; justify-self: center; }
+  .hero-photo img {
+    width: min(320px, 70vw); aspect-ratio: 1; object-fit: cover;
+    border-radius: 50%; border: 4px solid var(--orange);
+  }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: -18px -18px auto auto;
+    width: 88px; height: 88px; border-top: 3px solid var(--orange);
+    border-right: 3px solid var(--orange); border-radius: 0 50% 0 0;
+    z-index: -1;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 76px 0; }
+  section.alt { background: var(--surface-alt); }
+  .sec-head { margin-bottom: 38px; }
+  .sec-head .kicker { color: var(--orange); margin-bottom: 8px; }
+  h2 {
+    font-family: var(--display); font-weight: 700; font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    color: var(--navy); line-height: 1.15; letter-spacing: -.5px;
+  }
+  .sec-head p { color: var(--muted); max-width: 58ch; margin-top: 10px; }
+
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 48px; }
+  .about-grid p + p { margin-top: 16px; }
+  .facts { border-left: 3px solid var(--orange); padding-left: 22px; align-self: start; }
+  .facts dt {
+    font-family: var(--display); font-size: 12px; font-weight: 500;
+    letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); margin-top: 16px;
+  }
+  .facts dt:first-child { margin-top: 0; }
+  .facts dd { font-weight: 600; color: var(--navy); margin-top: 2px; }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline { border-left: 2px solid var(--line); margin-left: 8px; }
+  .tl-item { position: relative; padding: 0 0 38px 30px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -8px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--orange); border: 3px solid var(--surface-alt);
+  }
+  section:not(.alt) .tl-item::before { border-color: var(--surface); }
+  .tl-top {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .tl-top h3 { font-family: var(--display); font-size: 19px; color: var(--navy); font-weight: 700; }
+  .tl-date {
+    font-family: var(--display); font-size: 13px; font-weight: 500;
+    color: var(--orange); letter-spacing: .8px; white-space: nowrap;
+  }
+  .tl-org { color: var(--muted); font-weight: 500; font-size: 15px; margin: 2px 0 8px; }
+  .tl-item ul { list-style: none; }
+  .tl-item li {
+    position: relative; padding-left: 18px; color: var(--ink); font-size: 15.5px;
+    margin-top: 5px;
+  }
+  .tl-item li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 7px; height: 2px; background: var(--orange);
+  }
+
+  /* ---------- Work ---------- */
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .work-card {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px; background: var(--surface);
+  }
+  .work-card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .work-card h3 { font-family: var(--display); font-size: 20px; color: var(--navy); margin-bottom: 8px; }
+  .work-card p { color: var(--ink); font-size: 15.5px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    background: var(--chip); color: var(--navy); font-size: 12.5px; font-weight: 600;
+    padding: 5px 11px; border-radius: 20px;
+  }
+  .work-card.wide .photo-slot img {
+    border-radius: var(--radius); border: 1px solid var(--line);
+  }
+  .photo-caption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  /* ---------- Achievements ---------- */
+  .ach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .ach-card {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--surface); overflow: hidden;
+  }
+  .ach-body { padding: 22px 24px; }
+  .ach-year {
+    font-family: var(--display); font-size: 12.5px; font-weight: 500;
+    letter-spacing: 1.8px; text-transform: uppercase; color: var(--orange);
+  }
+  .ach-card h3 { font-family: var(--display); font-size: 18px; color: var(--navy); margin: 6px 0 4px; }
+  .ach-card .issuer { color: var(--muted); font-size: 14px; }
+  details.preview { border-top: 1px solid var(--line); }
+  details.preview summary {
+    list-style: none; cursor: pointer; padding: 12px 24px;
+    font-weight: 600; font-size: 14px; color: var(--navy);
+    display: flex; align-items: center; gap: 8px;
+  }
+  details.preview summary::-webkit-details-marker { display: none; }
+  details.preview summary::before {
+    content: "+"; font-family: var(--display); font-size: 18px; color: var(--orange);
+    width: 16px; display: inline-block;
+  }
+  details.preview[open] summary::before { content: "–"; }
+  details.preview iframe {
+    width: 100%; height: 460px; border: 0; border-top: 1px solid var(--line);
+    background: var(--surface-alt);
+  }
+  .ach-actions { padding: 0 24px 16px; }
+  .ach-actions a { font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--orange); }
+  .ach-actions a:hover { text-decoration: underline; }
+
+  /* ---------- Skills / Education ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    background: var(--chip); color: var(--navy); font-weight: 600; font-size: 14px;
+    padding: 9px 16px; border-radius: 24px;
+  }
+  .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .edu-item { border-top: 3px solid var(--orange); padding-top: 16px; }
+  .edu-item h3 { font-family: var(--display); font-size: 18px; color: var(--navy); }
+  .edu-item .org { color: var(--ink); font-weight: 500; }
+  .edu-item .when { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--navy); color: #fff; }
+  .contact h2 { color: #fff; }
+  .contact .kicker { color: var(--orange); }
+  .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: start; }
+  .contact p.lede { color: #D5DEE9; font-size: 18px; max-width: 46ch; margin: 14px 0 26px; }
+  .contact-list { list-style: none; }
+  .contact-list li { margin-bottom: 18px; }
+  .contact-list .label {
+    font-family: var(--display); font-size: 11.5px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 3px;
+  }
+  .contact-list a, .contact-list span.val {
+    color: #fff; font-size: 18px; font-weight: 500; text-decoration: none;
+    border-bottom: 1.5px solid rgba(255,255,255,.25); padding-bottom: 2px;
+  }
+  .contact-list a:hover { border-bottom-color: var(--orange); }
+
+  footer {
+    background: var(--navy-deep); color: #9FB0C4;
+    padding: 26px 0; font-size: 13.5px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* ---------- Motion ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn:hover { transform: none; }
+  }
+
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero-grid { padding: 48px 0 44px; gap: 36px; }
+    .hero-photo { justify-self: start; }
+    .work-grid, .ach-grid, .edu { grid-template-columns: 1fr; }
+    .work-card.wide { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+      position: absolute; top: 64px; left: 0; right: 0;
+      background: #fff; border-bottom: 1px solid var(--line);
+      padding: 12px 24px 18px;
+    }
+    .nav-toggle {
+      display: block; margin-left: auto; background: none; border: 1.5px solid var(--line);
+      border-radius: 8px; padding: 8px 12px; font-size: 14px; font-weight: 600;
+      color: var(--navy); cursor: pointer;
+    }
+    section { padding: 56px 0; }
+    details.preview iframe { height: 380px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top">Marc Choo<span>.</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="docs/marc-choo-cv.pdf" target="_blank" rel="noopener">Download CV</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-label="Introduction">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">SUTD undergraduate &middot; Maker</p>
+      <h1>I build things that live in the real world.</h1>
+      <p class="lede">I'm Marc — engineering student at SUTD, President of the Mechanical Designer Club, and a maker who is equally at home in 3D CAD and with a soldering iron. I like turning rough ideas into working hardware.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#work">See my work</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/marc-headshot.png" alt="Marc Choo speaking at a Multirotor SUTD drone project presentation" width="320" height="320">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">About</p>
+      <h2>Trained in high-stakes engineering. Drawn to making.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I believe the best innovation happens where the digital and the physical meet. My foundation is in Biomedical Engineering — a field that taught me discipline, because the stakes are people's health. Today my focus is broader: hardware systems and rapid prototyping.</p>
+        <p>Whether I'm architecting assemblies in 3D CAD or doing precision PCB soldering, I enjoy the loop of building, testing, and improving. My Biomedical Engineering background keeps that process rigorous.</p>
+        <p>Outside of engineering I run, and I follow sneaker releases far too closely.</p>
+      </div>
+      <dl class="facts reveal">
+        <dt>Studying now</dt>
+        <dd>Bachelor of Engineering, SUTD</dd>
+        <dt>Previously</dt>
+        <dd>Diploma in Biomedical Engineering, NYP</dd>
+        <dt>Tools I reach for</dt>
+        <dd>Fusion 360, Siemens NX</dd>
+        <dt>Based in</dt>
+        <dd>Singapore</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Selected work</p>
+      <h2>Things I've designed, built, and put in front of people.</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-card wide reveal">
+        <div>
+          <h3>Drone projects with Multirotor SUTD</h3>
+          <p>As Publicity Director I showcase the club's drone builds and competition entries. One highlight: a payload drop mechanism our team designed and presented — an assembly that has to release reliably under real flight conditions.</p>
+          <div class="tags">
+            <span class="tag">UAV systems</span>
+            <span class="tag">Mechanism design</span>
+            <span class="tag">Presentation &amp; outreach</span>
+          </div>
+        </div>
+        <div class="photo-slot">
+          <img src="assets/presentation.jpg" alt="Marc presenting the payload drop mechanism at a Multirotor SUTD session, with the project slide on the screen behind him">
+          <p class="photo-caption">Presenting the payload drop mechanism — Multirotor SUTD session.</p>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <h3>CAD workshops &amp; SpeedCAD</h3>
+        <p>As President of the Mechanical Designer Club I plan and run introductory CAD workshops, SpeedCAD competitions, and vendor-led sessions with Autodesk SG and SolidWorks — getting more students confident in 3D design.</p>
+        <div class="tags">
+          <span class="tag">Fusion 360</span>
+          <span class="tag">Siemens NX</span>
+          <span class="tag">Teaching</span>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <h3>Manufacturing internship at Kinergy</h3>
+        <p>A 3-month internship where I was trained to manufacturing technician standards — reading technical documentation, working to process standards, and learning how a production floor really runs.</p>
+        <div class="tags">
+          <span class="tag">Manufacturing</span>
+          <span class="tag">Technical documentation</span>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <h3>Biomedical device technology</h3>
+        <p>My NYP specialization: bio-electric signals, device testing and certification — lab work that gave me the measurement and verification habits I still use in hardware projects.</p>
+        <div class="tags">
+          <span class="tag">Bio-signals</span>
+          <span class="tag">Testing &amp; certification</span>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <h3>Aircraft maintenance in the RSAF</h3>
+        <p>Nearly two years as an Air Force Technician at Tengah Airbase: calibrated tools like torque wrenches, working strictly to job guides and technical orders — precision work where there is no room for guesswork.</p>
+        <div class="tags">
+          <span class="tag">Precision maintenance</span>
+          <span class="tag">Procedure-driven work</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Experience</p>
+      <h2>Where I've worked and served.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <h3>President, Mechanical Designer Club</h3>
+          <span class="tl-date">Mar 2026 — Present</span>
+        </div>
+        <p class="tl-org">Singapore University of Technology and Design (SUTD)</p>
+        <ul>
+          <li>Plan and host introductory CAD workshops, SpeedCAD competitions, and vendor-led sessions with Autodesk SG and SolidWorks.</li>
+          <li>Tools: Fusion 360, Siemens NX (Onshape in progress).</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <h3>Publicity Director, Multirotor SUTD</h3>
+          <span class="tl-date">Mar 2026 — Present</span>
+        </div>
+        <p class="tl-org">Singapore University of Technology and Design (SUTD)</p>
+        <ul>
+          <li>Direct publicity and outreach: showcase drone projects, competitions, and club culture by highlighting technical achievements.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <h3>Freshmore Representative, 10th SAC Council</h3>
+          <span class="tl-date">Feb 2026 — Present</span>
+        </div>
+        <p class="tl-org">Singapore University of Technology and Design (SUTD)</p>
+        <ul>
+          <li>Primary liaison for first-year students; guide the onboarding of incoming freshmores.</li>
+          <li>Strategise, plan, and run events that build student engagement.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <h3>Private Tutor</h3>
+          <span class="tl-date">Jan 2026 — Present</span>
+        </div>
+        <p class="tl-org">SmileTutor Pte Ltd</p>
+        <ul>
+          <li>1-to-1 private home tuition.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <h3>Air Force Technician</h3>
+          <span class="tl-date">Dec 2023 — Jul 2025</span>
+        </div>
+        <p class="tl-org">Republic of Singapore Air Force — Tengah Airbase</p>
+        <ul>
+          <li>Used hand tools and calibrated equipment such as torque wrenches across different aircraft work areas.</li>
+          <li>Worked to job guides and technical orders.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <h3>Assistant Technician (Internship)</h3>
+          <span class="tl-date">Sep 2022 — Nov 2022</span>
+        </div>
+        <p class="tl-org">Kinergy Corporation Limited</p>
+        <ul>
+          <li>Trained to manufacturing technician standards during a 3-month internship.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Achievements</p>
+      <h2>Awards &amp; certificates — open the PDFs right here.</h2>
+      <p>Each card opens the original certificate in the page. The scans are the real documents.</p>
+    </div>
+    <div class="ach-grid">
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <span class="ach-year">AY 2021/22 &middot; Semester 1</span>
+          <h3>Director's List</h3>
+          <p class="issuer">Nanyang Polytechnic, School of Engineering — outstanding academic performance</p>
+        </div>
+        <details class="preview">
+          <summary>Preview certificate</summary>
+          <iframe title="Director's List AY2021/22 Semester 1 certificate" loading="lazy" src="docs/directors-list-ay2021-22-sem1.pdf"></iframe>
+        </details>
+        <div class="ach-actions"><a href="docs/directors-list-ay2021-22-sem1.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <span class="ach-year">AY 2021/22 &middot; Semester 2</span>
+          <h3>Director's List</h3>
+          <p class="issuer">Nanyang Polytechnic, School of Engineering — outstanding academic performance</p>
+        </div>
+        <details class="preview">
+          <summary>Preview certificate</summary>
+          <iframe title="Director's List AY2021/22 Semester 2 certificate" loading="lazy" src="docs/directors-list-ay2021-22-sem2.pdf"></iframe>
+        </details>
+        <div class="ach-actions"><a href="docs/directors-list-ay2021-22-sem2.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <span class="ach-year">AY 2022/23 &middot; Semester 1</span>
+          <h3>Director's List</h3>
+          <p class="issuer">Nanyang Polytechnic, School of Engineering — outstanding academic performance</p>
+        </div>
+        <details class="preview">
+          <summary>Preview certificate</summary>
+          <iframe title="Director's List AY2022/23 Semester 1 certificate" loading="lazy" src="docs/directors-list-ay2022-23-sem1.pdf"></iframe>
+        </details>
+        <div class="ach-actions"><a href="docs/directors-list-ay2022-23-sem1.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <span class="ach-year">2023</span>
+          <h3>Edusave Certificate of Academic Achievement</h3>
+          <p class="issuer">People's Association, Singapore — good academic performance and good conduct</p>
+        </div>
+        <details class="preview">
+          <summary>Preview certificate</summary>
+          <iframe title="Edusave Certificate of Academic Achievement 2023" loading="lazy" src="docs/edusave-academic-achievement-2023.pdf"></iframe>
+        </details>
+        <div class="ach-actions"><a href="docs/edusave-academic-achievement-2023.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <span class="ach-year">2022</span>
+          <h3>Edusave Certificate of Academic Achievement</h3>
+          <p class="issuer">People's Association, Singapore — good academic performance and good conduct</p>
+        </div>
+        <details class="preview">
+          <summary>Preview certificate</summary>
+          <iframe title="Edusave Certificate of Academic Achievement 2022" loading="lazy" src="docs/edusave-academic-achievement-2022.pdf"></iframe>
+        </details>
+        <div class="ach-actions"><a href="docs/edusave-academic-achievement-2022.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <span class="ach-year">2023</span>
+          <h3>Diploma in Biomedical Engineering</h3>
+          <p class="issuer">Nanyang Polytechnic — awarded 16 March 2023</p>
+        </div>
+        <details class="preview">
+          <summary>Preview certificate</summary>
+          <iframe title="NYP Diploma in Biomedical Engineering certificate" loading="lazy" src="docs/nyp-diploma-biomedical-engineering.pdf"></iframe>
+        </details>
+        <div class="ach-actions"><a href="docs/nyp-diploma-biomedical-engineering.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <h3>2nd Place, SUTD SpeedCAD Amateur League</h3>
+          <p class="issuer">SpeedCAD competition</p>
+        </div>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-body">
+          <h3>AAVC 25</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS + EDUCATION -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Skills</p>
+      <h2>What I work with.</h2>
+    </div>
+    <div class="chips reveal">
+      <span class="chip">Fusion 360</span>
+      <span class="chip">Siemens NX</span>
+      <span class="chip">Onshape (learning)</span>
+      <span class="chip">3D CAD &amp; Assemblies</span>
+      <span class="chip">Rapid Prototyping</span>
+      <span class="chip">PCB Soldering</span>
+      <span class="chip">Solder Machines</span>
+      <span class="chip">Calibrated Tools</span>
+      <span class="chip">Tensile &amp; Pressure Testing</span>
+      <span class="chip">Circuit Inspection</span>
+      <span class="chip">Fault Finding &amp; Repair</span>
+      <span class="chip">Technical Documentation</span>
+      <span class="chip">Event Planning</span>
+      <span class="chip">Student Onboarding</span>
+      <span class="chip">Tutoring</span>
+      <span class="chip">Communication</span>
+      <span class="chip">Liaisoning</span>
+    </div>
+
+    <div class="sec-head reveal" style="margin-top:56px;">
+      <p class="kicker">Education</p>
+      <h2>Where I studied.</h2>
+    </div>
+    <div class="edu">
+      <div class="edu-item reveal">
+        <h3>Bachelor of Engineering</h3>
+        <p class="org">Singapore University of Technology and Design (SUTD)</p>
+        <p class="when">Jul 2025 — Jul 2029</p>
+      </div>
+      <div class="edu-item reveal">
+        <h3>Diploma in Biomedical Engineering</h3>
+        <p class="org">Nanyang Polytechnic — Biomedical Device Technology</p>
+        <p class="when">2020 — 2023</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="kicker">Contact</p>
+      <h2>Want to talk about hardware, CAD, or an opportunity?</h2>
+      <p class="lede">The fastest way to reach me is email. I'm open to internships, project collaborations, and anything involving building real things.</p>
+      <a class="btn btn-primary" href="mailto:marcchoo8@gmail.com?subject=Hello%20Marc">Email me</a>
+    </div>
+    <ul class="contact-list reveal">
+      <li>
+        <span class="label">Email</span>
+        <a href="mailto:marcchoo8@gmail.com">marcchoo8@gmail.com</a>
+      </li>
+      <li>
+        <span class="label">Phone</span>
+        <a href="tel:+6587233621">+65 8723 3621</a>
+      </li>
+      <li>
+        <span class="label">LinkedIn</span>
+        <a href="https://sg.linkedin.com/in/marc-choo-a91234212" target="_blank" rel="noopener">linkedin.com/in/marc-choo-a91234212</a>
+      </li>
+      <li>
+        <span class="label">CV</span>
+        <a href="docs/marc-choo-cv.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year">2026</span> Marc Choo</span>
+    <span>Built in Singapore</span>
+  </div>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  const header = document.querySelector('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  links.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Reveal on scroll (respects prefers-reduced-motion via CSS)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
