@@ -186,6 +186,21 @@
     border-radius: var(--radius); border: 1px solid var(--line);
   }
   .photo-caption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .card-photo img {
+    border-radius: var(--radius); border: 1px solid var(--line);
+    width: 100%; aspect-ratio: 16/10; object-fit: cover;
+  }
+  .photo-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px; margin-top: 16px;
+  }
+  .photo-row figure { margin: 0; }
+  .photo-row img {
+    border-radius: 8px; border: 1px solid var(--line);
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  }
+  .photo-row figcaption { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+  .work-card.wide .photo-row { grid-column: 1 / -1; }
 
   /* ---------- Achievements ---------- */
   .ach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
@@ -376,8 +391,36 @@
           <p class="photo-caption">Presenting the payload drop mechanism — Multirotor SUTD session.</p>
         </div>
       </div>
+      <div class="work-card wide reveal">
+        <div>
+          <h3>Lung simulator for a low-cost ventilator</h3>
+          <p>My final-year project at NYP (2022, supervised by Dr. Tan Seng Sing). Mechanical ventilators are too expensive for many hospitals in low- and middle-income countries, so the team built one from off-the-shelf parts — and my job was the lung simulator used to test it. I built the electronics (PCB, potentiometers, LCD, pressure sensor, Arduino control states), 3D printed the enclosure and re-cut parts with vernier caliper measurements until everything fitted, and prototyped a lung-deflation assist from acrylic and elastic bands — testing 2, 4 and 6 bands to mimic how a real lung keeps reserve air. I tracked air leaks with the soap-and-water test and helped code the ventilator's backup breathing mode for when no breath is detected.</p>
+          <div class="tags">
+            <span class="tag">Medical devices</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">3D printing</span>
+            <span class="tag">Prototyping</span>
+            <span class="tag">Testing</span>
+          </div>
+          <p style="margin-top:16px"><a href="https://youtube.com/shorts/QR6AbAF7OLk" target="_blank" rel="noopener" style="font-weight:600">Watch the deflation prototype in action ↗</a></p>
+        </div>
+        <div class="photo-slot">
+          <img src="assets/vent-control-board.jpg" alt="The lung simulator's control board: green PCB with microcontroller and four potentiometers wired by ribbon cables">
+          <p class="photo-caption">The lung simulator's control board — potentiometers, LCD and microcontroller.</p>
+        </div>
+        <div class="photo-row">
+          <figure>
+            <img src="assets/vent-breadboard-test.jpg" alt="Breadboard circuit with jumper wires, power connector and green LED used for early component testing">
+            <figcaption>Early breadboard test of the power and LED circuit.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/vent-deflation-prototype.jpg" alt="First prototype of the deflation-assist mechanism: a tube held in a cardboard channel with brackets and zip ties">
+            <figcaption>First prototype of the deflation-assist mechanism.</figcaption>
+          </figure>
+        </div>
+      </div>
       <div class="work-card reveal">
-        <h3>CAD workshops &amp; SpeedCAD</h3>
+        <h3>CAD workshops & SpeedCAD</h3>
         <p>As President of the Mechanical Designer Club I plan and run introductory CAD workshops, SpeedCAD competitions, and vendor-led sessions with Autodesk SG and SolidWorks — getting more students confident in 3D design.</p>
         <div class="tags">
           <span class="tag">Fusion 360</span>
@@ -386,8 +429,17 @@
         </div>
       </div>
       <div class="work-card reveal">
-        <h3>Building Structo 3D dental printers</h3>
-        <p>During my internship at Kinergy I helped build Structo 3D dental printers on the production line. The highlight: I designed and built a jig that brought consistency to one of the sub-assemblies. I got there by measuring carefully and refining the design with feedback from colleagues until the build was repeatable.</p>
+        <div class="card-photo">
+          <img src="assets/structo-printer.jpg" alt="The Structo DentaForm dental 3D printer, the machine built on the production line at Kinergy">
+        </div>
+        <h3 style="margin-top:16px">Building Structo 3D dental printers</h3>
+        <p>During my internship at Kinergy I helped build Structo DentaForm printers — orthodontic 3D printers that print dental arches used for invisible aligners. The highlight: I designed and built a jig that brought consistency to one of the sub-assemblies, measuring carefully and refining the design with feedback from colleagues until the build was repeatable.</p>
+        <div class="photo-row">
+          <figure>
+            <img src="assets/kinergy-workbench-bins.jpg" alt="Rows of labelled hardware bins above an assembly workbench at Kinergy">
+            <figcaption>My assembly workbench — labelled parts bins.</figcaption>
+          </figure>
+        </div>
         <div class="tags">
           <span class="tag">Manufacturing</span>
           <span class="tag">Jig design</span>
