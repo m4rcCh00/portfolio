@@ -125,6 +125,12 @@
     font-family: var(--display); font-weight: 700; font-size: clamp(1.7rem, 3.5vw, 2.3rem);
     color: var(--navy); line-height: 1.15; letter-spacing: -.5px;
   }
+  .sec-head h2 { display: flex; align-items: flex-end; gap: 16px; }
+  .sec-head h2 .t { border-bottom: 3px solid var(--orange); padding-bottom: 7px; }
+  .sec-head h2::after {
+    content: ""; flex: 1; height: 1px; background: var(--line); margin-bottom: 10px;
+  }
+  .contact .sec-head h2::after { background: rgba(255,255,255,.28); }
   .sec-head p { color: var(--muted); max-width: 58ch; margin-top: 10px; }
 
   /* ---------- About ---------- */
@@ -346,7 +352,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="kicker">About</p>
-      <h2>Trained in high-stakes engineering. Drawn to making.</h2>
+      <h2><span class="t">Trained in high-stakes engineering. Drawn to making.</span></h2>
     </div>
     <div class="about-grid">
       <div class="reveal">
@@ -375,7 +381,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="kicker">Selected work</p>
-      <h2>Things I've designed, built, and put in front of people.</h2>
+      <h2><span class="t">Things I've designed, built, and put in front of people.</span></h2>
     </div>
     <div class="work-grid">
       <div class="work-card wide reveal">
@@ -453,7 +459,7 @@
         </div>
       </div>
       <div class="work-card reveal">
-        <h3>CAD workshops & SpeedCAD</h3>
+        <h3>CAD workshops &amp; SpeedCAD</h3>
         <p>As President of the Mechanical Designer Club I plan and run introductory CAD workshops, SpeedCAD competitions, and vendor-led sessions with Autodesk SG and SolidWorks — getting more students confident in 3D design.</p>
         <div class="tags">
           <span class="tag">Fusion 360</span>
@@ -528,7 +534,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="kicker">Experience</p>
-      <h2>Where I've worked and served.</h2>
+      <h2><span class="t">Where I've worked and served.</span></h2>
     </div>
     <div class="timeline">
       <div class="tl-item reveal">
@@ -607,7 +613,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="kicker">Achievements</p>
-      <h2>Awards &amp; certificates — open the PDFs right here.</h2>
+      <h2><span class="t">Awards &amp; certificates — open the PDFs right here.</span></h2>
       <p>Each card opens the original certificate in the page. The scans are the real documents.</p>
     </div>
     <div class="ach-grid">
@@ -713,7 +719,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="kicker">Skills</p>
-      <h2>What I work with.</h2>
+      <h2><span class="t">What I work with.</span></h2>
     </div>
     <div class="chips reveal">
       <span class="chip">UAPL Class A (CAAS)</span>
@@ -741,7 +747,7 @@
 
     <div class="sec-head reveal" style="margin-top:56px;">
       <p class="kicker">Education</p>
-      <h2>Where I studied.</h2>
+      <h2><span class="t">Where I studied.</span></h2>
     </div>
     <div class="edu">
       <div class="edu-item reveal">
@@ -763,7 +769,7 @@
   <div class="wrap contact-grid">
     <div class="reveal">
       <p class="kicker">Contact</p>
-      <h2>Want to talk about hardware, CAD, or an opportunity?</h2>
+      <h2><span class="t">Want to talk about hardware, CAD, or an opportunity?</span></h2>
       <p class="lede">The fastest way to reach me is email. I'm open to internships, project collaborations, and anything involving building real things.</p>
       <a class="btn btn-primary" href="mailto:marcchoo8@gmail.com?subject=Hello%20Marc">Email me</a>
     </div>
